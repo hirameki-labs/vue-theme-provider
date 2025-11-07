@@ -4,64 +4,115 @@ A Vue 3 plugin for updating the class attribute on the HTML element based on the
 
 This uses VueUse API under the hood, however this was created to leverage the `provide/inject` api of Vue.
 
-
-## Component Example Usage:
+## Component Example Usage
 
 ```vue
 <template>
-    <ThemeProvider 
-        :modes="{
-            'dark': 'app-dark',
-            'coffee': 'coffee-theme',
-            'tui': 'tui-theme',
-        }"
-        :storage-key="'myapp.theme'"
-    > 
-        <YourAppComponents />
-    </ThemeProvider>
+  <ThemeProvider
+    :modes="{
+      dark: 'app-dark',
+      coffee: 'coffee-theme',
+      tui: 'tui-theme',
+    }"
+    storage-key="myapp.theme"
+  >
+    <YourAppComponents />
+  </ThemeProvider>
 </template>
 ```
 
-## Composables Example Usage:
+On the child components, you can use the `useThemeProviderInject` composable to access the theme provider.
+
+```vue
+<script setup lang="ts">
+const theme = useThemeProviderInject()
+theme.onThemeChange((newMode) => {
+  console.log(`Theme changed to: ${JSON.stringify(newMode)}`)
+})
+
+theme.value = 'dark' // sets to dark mode, adds 'app-dark' class to html element
+
+const isDark = computed(() => theme.isDark.value) // true
+const state = computed(() => theme.state.value) // 'dark'
+const system = computed(() => theme.system.value) // 'dark'
+const store = computed(() => theme.store.value) // 'dark'
+const currentModeValue = computed(() => theme.currentModeValue.value) // 'app-dark'
+</script>
+```
+
+## Composables Example Usage
 
 ```ts
 import { useThemeProvider } from '@hirameki/vue-theme-provider'
 
-const { mode, isDark, setColorMode } = useThemeProvider({
-    modes: {
-        'dark': 'app-dark',
-        'coffee': 'coffee-theme',
-        'tui': 'tui-theme',
-    },
-    storageKey: 'myapp.theme',
-});
+const theme = useThemeProvider({
+  modes: {
+    dark: 'app-dark',
+    coffee: 'coffee-theme',
+    tui: 'tui-theme',
+  },
+  storageKey: 'myapp.theme',
+})
 
-mode.value = 'dark',
+theme.onThemeChange((newMode) => {
+  console.log(`Theme changed to: ${JSON.stringify(newMode)}`)
+})
 
+theme.value = 'dark' // sets to dark mode, adds 'app-dark' class to html element
+
+const isDark = computed(() => theme.isDark.value) // true
+const state = computed(() => theme.state.value) // 'dark'
+const system = computed(() => theme.system.value) // 'dark'
+const store = computed(() => theme.store.value) // 'dark'
+const currentModeValue = computed(() => theme.currentModeValue.value) // 'app-dark'
 ```
+
+## :heart: Support :heart:
+
+[![GitHub][github-badge]][github-sponsors] - Become a Sponsor on GitHub. One time support, or a recurring donation
+
+[![Paypal][paypal-badge]][paypal] - One-time donation via PayPal
+
+<!-- markdownlint-disable no-inline-html -->
+<p align="center">
+  <img src="https://hoshizora.markterence.me/github-stargazers/markterence/vue-theme-provider?show_usernames=1&v=1" align="center" alt="stargazers"/>
+</p>
+
+---
 
 ## Development
 
 - Install dependencies:
 
 ```bash
-npm install
+pnpm install
 ```
 
 - Run the playground:
 
 ```bash
-npm run playground
+pnpm run playground
 ```
 
 - Run the unit tests:
 
 ```bash
-npm run test
+pnpm run test
 ```
 
 - Build the library:
 
 ```bash
-npm run build
+pnpm run build
 ```
+
+## License
+
+[MIT License](LICENSE)© Mark Terence Tiglao - 2025
+
+---
+
+[github-badge]: https://img.shields.io/badge/-Github%20Sponsor-fafbfc?logo=GitHub%20Sponsors
+[github-sponsors]: https://github.com/sponsors/markterence
+[paypal-badge]: https://img.shields.io/badge/-Paypal-002991?logo=Paypal
+[paypal]: https://paypal.me/MarkTerenceTiglao
