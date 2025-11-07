@@ -1,8 +1,18 @@
-# @hirameki/vue-theme-provider
+# vue-theme-provider
 
 A Vue 3 plugin for updating the class attribute on the HTML element based on the current theme (light/dark/custom). This also saves the user's theme preference in localStorage.
 
 This uses VueUse API under the hood, however this was created to leverage the `provide/inject` api of Vue.
+
+## Installation
+
+```bash
+# pnpm
+pnpm add @hirameki/vue-theme-provider
+
+# npm
+npm install @hirameki/vue-theme-provider
+```
 
 ## Component Example Usage
 
