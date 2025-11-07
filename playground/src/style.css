@@ -45,6 +45,7 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  color: inherit;
 }
 button:hover {
   border-color: #646cff;
@@ -56,6 +57,9 @@ button:focus-visible {
 
 .card {
   padding: 2em;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.1),
+    0 8px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
 }
 
 #app {
@@ -76,4 +80,18 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* Light theme triggered by class - overrides media query */
+.light {
+  color: #213547;
+  background-color: #ffffff;
+}
+
+.light a:hover {
+  color: #747bff;
+}
+
+.light button {
+  background-color: #f9f9f9;
 }
