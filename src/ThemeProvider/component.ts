@@ -1,21 +1,24 @@
-import type { BasicColorSchema } from '@vueuse/core';
-import type { Reactive, SlotsType } from 'vue';
-import type { UseThemeProviderOptions, UseThemeProviderReturn } from './composable';
+import type { Reactive, SlotsType } from 'vue'
+import type { UseThemeProviderOptions, UseThemeProviderReturn } from './composable'
 
 import {
   defineComponent,
   reactive,
-} from 'vue';
-import { useThemeProvider } from './composable';
+} from 'vue'
+import { useThemeProvider } from './composable'
 
 export interface ThemeProviderSlots {
   default: (data: Reactive<
     {
-      mode: UseThemeProviderReturn<BasicColorSchema>;
-      isDark: UseThemeProviderReturn['isDark'];
-      setColorMode: UseThemeProviderReturn['setColorMode'];
+      colorMode: UseThemeProviderReturn['value']
+      state: UseThemeProviderReturn['state']
+      system: UseThemeProviderReturn['system']
+      store: UseThemeProviderReturn['store']
+      isDark: UseThemeProviderReturn['isDark']
+      currentModeValue: UseThemeProviderReturn['currentModeValue']
+      onThemeChange: UseThemeProviderReturn['onThemeChange']
     }
-  >) => any;
+  >) => any
 }
 
 export interface ThemeProviderProps extends UseThemeProviderOptions {};
@@ -27,19 +30,23 @@ export const ThemeProvider = /* #__PURE__ */ defineComponent<
   SlotsType<ThemeProviderSlots>
 >(
   (props, { slots }) => {
-    const theme = useThemeProvider(props);
+    const theme = useThemeProvider(props)
 
     const data = reactive({
-      mode: theme,
-      isDark: theme.isDark,
-      setColorMode: theme.setColorMode,
-    });
+      colorMode: theme.value,
+      state: theme.state.value,
+      system: theme.system.value,
+      store: theme.store.value,
+      isDark: theme.isDark.value,
+      currentModeValue: theme.currentModeValue.value,
+      onThemeChange: theme.onThemeChange,
+    })
 
     return () => {
       if (slots.default) {
-        return slots.default(data);
+        return slots.default(data)
       }
-    };
+    }
   },
   {
     name: 'ThemeProvider',
@@ -48,4 +55,4 @@ export const ThemeProvider = /* #__PURE__ */ defineComponent<
       'storageKey',
     ],
   },
-);
+)
