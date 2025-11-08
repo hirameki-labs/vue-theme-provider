@@ -1,7 +1,7 @@
 {
   "name": "@hirameki/vue-theme-provider",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "packageManager": "pnpm@10.20.0+sha512.cf9998222162dd85864d0a8102e7892e7ba4ceadebbf5a31f9c2fce48dfce317a9c53b9f6464d1ef9042cba2e02ae02a9f7c143a2b438cd93c91840f0192b9dd",
   "description": "A Vue 3 utility for updating the class attribute on the HTML element based on the current theme (light/dark/custom). This also saves the user's theme preference in localStorage. This does not provide visual themes, since it's up to you to define themes in your pipeline.",
   "author": "Mark Terence Tiglao <github@markterence.me>",
