@@ -1,0 +1,28 @@
+@theme {
+    --color-primary: var(--color-blue-500);
+    --color-fg: var(--color-gray-900);
+    --color-bg: var(--color-white);
+    --radius-md: 8px;
+    --content-bg: var(--color-white);
+}
+
+@layer base {
+    button {
+        padding: 8px;
+        border-radius: var(--radius-md);
+        border: 1px solid transparent;
+        background: var(--color-primary);
+        color: #fff;
+    }
+    button:hover {
+        border-color: #646cff;
+    }
+    button:focus,
+    button:focus-visible {
+        outline: 4px auto -webkit-focus-ring-color;
+    }
+    body {
+        background-color: var(--color-bg);
+        color: var(--color-fg);
+    }
+}

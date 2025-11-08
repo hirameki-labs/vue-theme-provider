@@ -1,0 +1,11 @@
+@layer theme {
+ * {
+    @variant dark {
+    --color-primary: var(--color-neutral-800);
+    --color-fg: var(--color-neutral-300);
+    --color-bg: var(--color-neutral-900);
+    --radius-md: 8px;
+    --content-bg: var(--color-neutral-900);
+    }
+ }
+}

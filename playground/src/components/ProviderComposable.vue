@@ -36,8 +36,12 @@ const currentModeValue = computed(() => theme.currentModeValue.value)
     <p>Store: {{ store }}</p>
     <p>Current Mode Value: {{ currentModeValue }}</p>
 
-    <div>
-      <button v-for="mode in Object.keys(THEME_MODES)" :key="mode" @click="theme = (mode as keyof typeof THEME_MODES)">
+    <div class="space-x-2">
+      <button
+        v-for="mode in Object.keys(THEME_MODES)" :key="mode"
+
+        @click="theme = (mode as keyof typeof THEME_MODES)"
+      >
         Set to {{ mode }}
       </button>
       <button @click="theme = 'light'">
@@ -45,8 +49,10 @@ const currentModeValue = computed(() => theme.currentModeValue.value)
       </button>
     </div>
 
-    <div class="card" style="margin-top: 0.8rem; text-align: left; max-height: 200px; display: flex;">
-      <h3>Logs:</h3>
+    <div class="font-mono card flex flex-col h-80" style="margin-top: 0.8rem; text-align: left; max-height: 200px; display: flex;">
+      <h3>
+        Logs:
+      </h3>
       <div style="overflow-y: auto; padding-right: 1rem;">
         <ul>
           <li v-for="(i) in history" :key="i.timestamp">

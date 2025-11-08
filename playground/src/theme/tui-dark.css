@@ -1,0 +1,42 @@
+
+@layer theme {
+  * {
+    @variant tui {
+        --color-primary: var(--color-neutral-300);
+        --color-fg: rgba(255,255,255,0.87);
+        --color-bg: #18181b;
+        --content-bg: #23272e;
+        font-family: monospace;
+    }
+  }
+}
+
+@layer components {
+    @variant tui {
+        .card {
+            background-color: var(--content-bg, var(--color-bg));
+            color: var(--color-fg);
+            padding: 1rem;
+            border-radius: 0px;
+            border-width: 1px;
+            border-color:  var(--color-primary);
+            /* box-shadow: 0 2px 8px 0 rgba(0,0,0,0.6); */
+            transition: box-shadow 0.2s;
+        }
+
+        button {
+            background-color: #2d2d2d;
+            color: rgba(255, 255, 255, 0.87);
+            border-color: var(--color-primary);
+            border-radius: 0;
+        }
+
+        button:hover {
+            border-color: var(--color-neutral-500);
+        }
+        button:focus,
+        button:focus-visible {
+            outline: 4px auto -webkit-focus-ring-color;
+        }
+    }
+}

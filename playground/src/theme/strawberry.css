@@ -1,0 +1,45 @@
+@layer theme {
+  * {
+    @variant strawberry {
+        --color-primary: #ff5a8d;           /* Strawberry pink */
+        --color-fg: #a80038;                /* Deep pink/red for text */
+        --color-bg: #fff0f6;                /* Light pink background */
+        --content-bg: #ffe4ec;              /* Slightly deeper pink for cards */
+        font-family: 'Comic Sans MS', 'Comic Sans', cursive, monospace;
+    }
+  }
+}
+
+@layer components {
+    @variant strawberry {
+        .card {
+            background-color: var(--content-bg, var(--color-bg));
+            color: var(--color-fg);
+            padding: 1rem;
+            border-radius: 16px;
+            border-width: 2px;
+            border-color: var(--color-primary);
+            box-shadow: 0 4px 16px 0 rgba(255, 90, 141, 0.15);
+            transition: box-shadow 0.2s;
+        }
+
+        button {
+            background-color: #ff5a8d;
+            color: #fff;
+            border-color: #ffb3c6;
+            border-radius: 9999px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px 0 rgba(255, 90, 141, 0.10);
+        }
+
+        button:hover {
+            background-color: #ffb3c6;
+            color: #a80038;
+            border-color: #ff5a8d;
+        }
+        button:focus,
+        button:focus-visible {
+            outline: 4px auto #ffb3c6;
+        }
+    }
+}

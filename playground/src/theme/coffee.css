@@ -1,0 +1,56 @@
+@layer theme {
+  * {
+    @variant coffee {
+        --color-primary: #a67c52;
+        --color-fg: #5c4033;
+        --color-bg: #f7f3ee;
+        --content-bg: #ede0d4;
+        font-family: 'Georgia', 'Times New Roman', serif;
+        --radius-md: 6px; /* Less round */
+    }
+  }
+}
+@layer base {
+    :focus-visible {
+        @variant coffee {
+            outline: 2px auto #c9b29b; /* Coffee accent color */
+        }
+    }
+}
+
+@layer components {
+    @variant coffee {
+        .card {
+            background-color: var(--content-bg, var(--color-bg));
+            color: var(--color-fg);
+            padding: 1rem;
+            border-radius: 6px; /* Less round */
+            border-width: 2px;
+            border-color: var(--color-primary);
+            box-shadow: 0 4px 16px 0 rgba(166, 124, 82, 0.10);
+            transition: box-shadow 0.2s;
+        }
+
+        button {
+            background-color: #a67c52;
+            color: #fff;
+            border-color: #c9b29b;
+            border-radius: 6px; /* Less round */
+            font-weight: 600;
+            box-shadow: 0 2px 8px 0 rgba(166, 124, 82, 0.08);
+        }
+
+        button:hover {
+            background-color: #c9b29b;
+            color: #5c4033;
+            border-color: #a67c52;
+        }
+        button:focus,
+        button:focus-visible {
+            outline-color: #c9b29b;
+            outline-width: 1px;
+            outline-style: solid;
+            /* outline: 1px auto #c9b29b !important; */
+        }
+    }
+}
