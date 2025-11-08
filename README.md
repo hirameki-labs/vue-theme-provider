@@ -1,8 +1,28 @@
-# @hirameki/vue-theme-provider
 
-A Vue 3 plugin for updating the class attribute on the HTML element based on the current theme (light/dark/custom). This also saves the user's theme preference in localStorage.
+<p align="center">
+  <a href="https://npmjs.com/package/@hirameki/vue-theme-provider">
+    <img src="https://badgen.net/npm/v/@hirameki/vue-theme-provider?color=orange" alt="npm package">
+  </a>
+</p>
+<br/>
 
-This uses VueUse API under the hood, however this was created to leverage the `provide/inject` api of Vue.
+# vue-theme-provider
+
+A Vue 3 utility for updating the class attribute on the HTML element based on the current theme (light/dark/custom). This also saves the user's theme preference in localStorage.
+
+This uses VueUse API under the hood, however this was created to leverage the `provide/inject` api of Vue and act as top-level provider.
+
+Demo/Playground: https://markterence.github.io/vue-theme-provider/
+
+## Installation
+
+```bash
+# pnpm
+pnpm add @hirameki/vue-theme-provider
+
+# npm
+npm install @hirameki/vue-theme-provider
+```
 
 ## Component Example Usage
 
@@ -39,6 +59,12 @@ const store = computed(() => theme.store.value) // 'dark'
 const currentModeValue = computed(() => theme.currentModeValue.value) // 'app-dark'
 </script>
 ```
+
+> [!WARNING]
+> Do not use the `useThemeProvider()` repeatedly on child components to access the state, instead use `useThemeProviderInject()` to access the state on other components.
+> The `useThemeProvider()` and the `<ThemeProvider>` component must be used on the top-level or on your applications entrypoint. 
+> If it was used repeatedly this will create another state and will create the default values on the local storage and will not use the main configuration.
+
 
 ## Composables Example Usage
 
